@@ -1,7 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorBackground">@color/colorBackground</item>--> // causes eroors
         <!-- Customize your theme here. -->
     </style>
 
