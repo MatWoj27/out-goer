@@ -6,4 +6,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="GradientTheme" parent="Theme.Design.NoActionBar">
+        <item name="android:background">@drawable/gradient_list</item>
+        <!--<item name=""-->
+    </style>
+
 </resources>
