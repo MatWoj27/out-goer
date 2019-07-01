@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">OutGoer</string>
+    <string name="username_hint">Username</string>
+    <string name="sign_in">Sign In</string>
+    <string name="go_to_sign_up">Don\'t have an account?</string>
+    <string name="mail_hint">example@mail.com</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="go_to_sign_in">Already have an account?</string>
 </resources>

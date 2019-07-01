@@ -1,26 +1,89 @@
 package com.mattech.outgoer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.mattech.outgoer.fragments.SignInFragment;
+import com.mattech.outgoer.fragments.SignUpFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity implements SignInFragment.ActionPerformedListener, SignUpFragment.ActionPerformedListener {
+    private AnimationDrawable animationDrawable;
 
     @BindView(R.id.login_layout)
     LinearLayout loginLayout;
+
+    @BindView(R.id.login_frame)
+    FrameLayout loginFrame;
+
+    enum AnimationType {
+        LEFT_TO_RIGHT,
+        RIGHT_TO_LEFT,
+        NO_ANIM
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        AnimationDrawable animationDrawable = (AnimationDrawable) loginLayout.getBackground();
+        animationDrawable = (AnimationDrawable) loginLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(3500);
+        SignInFragment signInFragment = new SignInFragment();
+        changeFragment(signInFragment, AnimationType.NO_ANIM);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         animationDrawable.start();
+    }
+
+    @Override
+    public void signIn() {
+    }
+
+    @Override
+    public void goToSignUp() {
+        SignUpFragment signUpFragment = new SignUpFragment();
+        changeFragment(signUpFragment, AnimationType.LEFT_TO_RIGHT);
+    }
+
+    @Override
+    public void signUp() {
+    }
+
+    @Override
+    public void goToSignIn() {
+        SignInFragment signInFragment = new SignInFragment();
+        changeFragment(signInFragment, AnimationType.RIGHT_TO_LEFT);
+    }
+
+    private void changeFragment(android.support.v4.app.Fragment fragment, AnimationType animationType) {
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        switch (animationType) {
+            case LEFT_TO_RIGHT:
+                ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                break;
+            case RIGHT_TO_LEFT:
+                ft.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right,
+                        R.anim.enter_right_to_left, R.anim.exit_right_to_left);
+                break;
+        }
+        ft.replace(R.id.login_frame, fragment);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 }

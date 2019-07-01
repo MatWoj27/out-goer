@@ -3,12 +3,6 @@
     <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--<item name="colorBackground">@color/colorBackground</item>--> // causes eroors
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="GradientTheme" parent="Theme.Design.NoActionBar">
-        <item name="android:background">@drawable/gradient_list</item>
-        <!--<item name=""-->
     </style>
 
 </resources>
