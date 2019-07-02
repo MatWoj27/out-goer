@@ -21,8 +21,14 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     @BindView(R.id.username)
     EditText username;
 
+    @BindView(R.id.password)
+    EditText password;
+
     @BindView(R.id.sign_in_btn)
     Button signInBtn;
+
+    @BindView(R.id.forgot_password)
+    TextView forgotPassword;
 
     @BindView(R.id.sign_up)
     TextView signUp;
