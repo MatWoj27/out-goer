@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.mattech.outgoer.fragments.ResetPasswordFragment;
 import com.mattech.outgoer.fragments.SignInFragment;
 import com.mattech.outgoer.fragments.SignUpFragment;
 
@@ -57,6 +58,12 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
     public void goToSignUp() {
         SignUpFragment signUpFragment = new SignUpFragment();
         changeFragment(signUpFragment, AnimationType.LEFT_TO_RIGHT);
+    }
+
+    @Override
+    public void goToResetPassword() {
+        ResetPasswordFragment resetPasswordFragment = new ResetPasswordFragment();
+        changeFragment(resetPasswordFragment, AnimationType.RIGHT_TO_LEFT);
     }
 
     @Override

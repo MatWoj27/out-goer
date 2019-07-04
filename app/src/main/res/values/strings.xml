@@ -11,4 +11,15 @@
     <string name="sign_up">Sign Up</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="go_to_sign_in">Already have an account?</string>
+    <string name="forgot_your_pass">Forgot your password?</string>
+    <string name="pass_reset_request_info">We will send a reset code to given email address</string>
+    <string name="enter_mail_hint">Enter you email</string>
+    <string name="send">Send</string>
+    <string name="enter_reset_code">Enter reset code</string>
+    <string name="reset_code_info">Enter the code you received on your email</string>
+    <string name="reset_code_hint">Reset code</string>
+    <string name="verify">Verify</string>
+    <string name="enter_new_pass">New password</string>
+    <string name="confirm_new_pass">Confirm password</string>
+    <string name="change">change</string>
 </resources>

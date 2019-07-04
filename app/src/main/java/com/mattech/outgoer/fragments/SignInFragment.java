@@ -2,7 +2,7 @@ package com.mattech.outgoer.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ import com.mattech.outgoer.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SignInFragment extends android.support.v4.app.Fragment {
+public class SignInFragment extends Fragment {
     ActionPerformedListener listener;
 
     @BindView(R.id.username)
@@ -35,13 +35,16 @@ public class SignInFragment extends android.support.v4.app.Fragment {
 
     public interface ActionPerformedListener {
         void signIn();
+
         void goToSignUp();
+
+        void goToResetPassword();
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof ActionPerformedListener){
+        if (context instanceof ActionPerformedListener) {
             listener = (ActionPerformedListener) context;
         } else {
             throw new RuntimeException(context.toString() + " has to implement SignInFragment.ActionPerformedListener");
@@ -54,10 +57,14 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         ButterKnife.bind(this, view);
         signUp.setOnClickListener(v -> {
-                    if (listener != null)
-                        listener.goToSignUp();
-                }
-        );
+            if (listener != null)
+                listener.goToSignUp();
+        });
+        forgotPassword.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.goToResetPassword();
+            }
+        });
         return view;
     }
 }
