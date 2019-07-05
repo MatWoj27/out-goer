@@ -22,4 +22,6 @@
     <string name="enter_new_pass">New password</string>
     <string name="confirm_new_pass">Confirm password</string>
     <string name="change">change</string>
+    <string name="no_username_error">Username field is empty!</string>
+    <string name="no_pass_error">Password field is empty!</string>
 </resources>

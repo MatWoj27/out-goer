@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mattech.outgoer.R;
 
@@ -56,6 +57,14 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         ButterKnife.bind(this, view);
+        signInBtn.setOnClickListener(v -> {
+            if (username.getText().toString().equals(""))
+                Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
+            else if (password.getText().toString().equals(""))
+                Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
+            else
+                listener.signIn();
+        });
         signUp.setOnClickListener(v -> {
             if (listener != null)
                 listener.goToSignUp();
