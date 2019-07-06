@@ -19,9 +19,11 @@
     <string name="reset_code_info">Enter the code you received on your email</string>
     <string name="reset_code_hint">Reset code</string>
     <string name="verify">Verify</string>
+    <string name="reset_pass">Reset your password</string>
+    <string name="reset_pass_info">Enter the new password</string>
     <string name="enter_new_pass">New password</string>
     <string name="confirm_new_pass">Confirm password</string>
-    <string name="change">change</string>
+    <string name="change">Change</string>
     <string name="no_username_error">Username field is empty!</string>
     <string name="no_pass_error">Password field is empty!</string>
 </resources>
