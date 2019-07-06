@@ -24,6 +24,11 @@
     <string name="enter_new_pass">New password</string>
     <string name="confirm_new_pass">Confirm password</string>
     <string name="change">Change</string>
+
+    <!--warnings-->
     <string name="no_username_error">Username field is empty!</string>
     <string name="no_pass_error">Password field is empty!</string>
+    <string name="no_repeat_pass_error">You have to confirm the password!</string>
+    <string name="different_passwords_error">The passwords are not matching!</string>
+    <string name="no_mail_error">Email field is empty!</string>
 </resources>
