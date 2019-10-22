@@ -64,10 +64,14 @@ public class SignUpFragment extends android.support.v4.app.Fragment {
                 listener.goToSignIn();
         });
         signUpBtn.setOnClickListener(v -> {
-            if (mail.getText().toString().isEmpty())
+            if (mail.getText().toString().isEmpty()) {
+                //shake mail editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_mail_error), Toast.LENGTH_SHORT).show();
-            else if (username.getText().toString().isEmpty())
+            }
+            else if (username.getText().toString().isEmpty()) {
+                //shake username editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
+            }
             else if (password.getText().toString().isEmpty())
                 Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
             else if (repeatPassword.getText().toString().isEmpty())
