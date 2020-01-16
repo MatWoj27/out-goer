@@ -1,9 +1,11 @@
-package com.mattech.outgoer;
+package com.mattech.outgoer.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+
+import com.mattech.outgoer.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

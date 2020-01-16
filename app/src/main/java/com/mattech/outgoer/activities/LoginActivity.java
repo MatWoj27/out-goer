@@ -1,4 +1,4 @@
-package com.mattech.outgoer;
+package com.mattech.outgoer.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.mattech.outgoer.R;
 import com.mattech.outgoer.fragments.ResetPasswordFragment;
 import com.mattech.outgoer.fragments.SignInFragment;
 import com.mattech.outgoer.fragments.SignUpFragment;
