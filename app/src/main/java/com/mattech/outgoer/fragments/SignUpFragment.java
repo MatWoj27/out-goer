@@ -1,6 +1,5 @@
 package com.mattech.outgoer.fragments;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -67,12 +66,10 @@ public class SignUpFragment extends Fragment {
             if (mail.getText().toString().isEmpty()) {
                 //shake mail editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_mail_error), Toast.LENGTH_SHORT).show();
-            }
-            else if (username.getText().toString().isEmpty()) {
+            } else if (username.getText().toString().isEmpty()) {
                 //shake username editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
-            }
-            else if (password.getText().toString().isEmpty())
+            } else if (password.getText().toString().isEmpty())
                 Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
             else if (repeatPassword.getText().toString().isEmpty())
                 Toast.makeText(getContext(), getResources().getString(R.string.no_repeat_pass_error), Toast.LENGTH_SHORT).show();

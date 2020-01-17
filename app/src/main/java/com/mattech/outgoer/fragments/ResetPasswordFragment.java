@@ -1,6 +1,5 @@
 package com.mattech.outgoer.fragments;
 
-
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
