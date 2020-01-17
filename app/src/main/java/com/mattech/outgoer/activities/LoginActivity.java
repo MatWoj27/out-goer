@@ -41,8 +41,10 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
         animationDrawable = (AnimationDrawable) loginLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(3500);
-        SignInFragment signInFragment = new SignInFragment();
-        changeFragment(signInFragment, AnimationType.NO_ANIM, false);
+        if (savedInstanceState == null) {
+            SignInFragment signInFragment = new SignInFragment();
+            changeFragment(signInFragment, AnimationType.NO_ANIM, false);
+        }
     }
 
     @Override
