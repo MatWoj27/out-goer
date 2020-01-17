@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(3500);
         SignInFragment signInFragment = new SignInFragment();
-        changeFragment(signInFragment, AnimationType.NO_ANIM);
+        changeFragment(signInFragment, AnimationType.NO_ANIM, false);
     }
 
     @Override
@@ -58,13 +58,13 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
     @Override
     public void goToSignUp() {
         SignUpFragment signUpFragment = new SignUpFragment();
-        changeFragment(signUpFragment, AnimationType.LEFT_TO_RIGHT);
+        changeFragment(signUpFragment, AnimationType.LEFT_TO_RIGHT, true);
     }
 
     @Override
     public void goToResetPassword() {
         ResetPasswordFragment resetPasswordFragment = new ResetPasswordFragment();
-        changeFragment(resetPasswordFragment, AnimationType.RIGHT_TO_LEFT);
+        changeFragment(resetPasswordFragment, AnimationType.RIGHT_TO_LEFT, true);
     }
 
     @Override
@@ -74,10 +74,10 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
     @Override
     public void goToSignIn() {
         SignInFragment signInFragment = new SignInFragment();
-        changeFragment(signInFragment, AnimationType.RIGHT_TO_LEFT);
+        changeFragment(signInFragment, AnimationType.RIGHT_TO_LEFT, true);
     }
 
-    private void changeFragment(android.support.v4.app.Fragment fragment, AnimationType animationType) {
+    private void changeFragment(android.support.v4.app.Fragment fragment, AnimationType animationType, boolean addToBackStack) {
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (animationType) {
             case LEFT_TO_RIGHT:
@@ -90,8 +90,9 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
                 break;
         }
         ft.replace(R.id.login_frame, fragment);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        if (addToBackStack) {
+            ft.addToBackStack(null);
+        }
         ft.commit();
     }
 }
