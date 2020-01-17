@@ -3,7 +3,7 @@ package com.mattech.outgoer.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +17,7 @@ import com.mattech.outgoer.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SignUpFragment extends android.support.v4.app.Fragment {
+public class SignUpFragment extends Fragment {
     ActionPerformedListener listener;
 
     @BindView(R.id.mail)
