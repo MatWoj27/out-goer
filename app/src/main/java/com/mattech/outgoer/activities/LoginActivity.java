@@ -3,8 +3,8 @@ package com.mattech.outgoer.activities;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.mattech.outgoer.R;
 import com.mattech.outgoer.fragments.ResetPasswordFragment;
@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
     private AnimationDrawable animationDrawable;
 
     @BindView(R.id.login_layout)
-    LinearLayout loginLayout;
+    ViewGroup loginLayout;
 
     @BindView(R.id.login_frame)
     FrameLayout loginFrame;
