@@ -63,15 +63,15 @@ public class SignUpFragment extends Fragment {
                 listener.goToSignIn();
         });
         signUpBtn.setOnClickListener(v -> {
-            if (mail.getText().toString().isEmpty()) {
+            if (mail.getText().toString().trim().isEmpty()) {
                 //shake mail editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_mail_error), Toast.LENGTH_SHORT).show();
-            } else if (username.getText().toString().isEmpty()) {
+            } else if (username.getText().toString().trim().isEmpty()) {
                 //shake username editTextView
                 Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
-            } else if (password.getText().toString().isEmpty())
+            } else if (password.getText().toString().trim().isEmpty())
                 Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
-            else if (repeatPassword.getText().toString().isEmpty())
+            else if (repeatPassword.getText().toString().trim().isEmpty())
                 Toast.makeText(getContext(), getResources().getString(R.string.no_repeat_pass_error), Toast.LENGTH_SHORT).show();
             else if (!password.getText().toString().equals(repeatPassword.getText().toString()))
                 Toast.makeText(getContext(), getResources().getString(R.string.different_passwords_error), Toast.LENGTH_SHORT).show();
