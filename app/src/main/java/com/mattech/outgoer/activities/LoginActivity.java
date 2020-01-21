@@ -2,6 +2,8 @@ package com.mattech.outgoer.activities;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -75,8 +77,8 @@ public class LoginActivity extends AppCompatActivity implements SignInFragment.A
         changeFragment(signInFragment, AnimationType.RIGHT_TO_LEFT, true);
     }
 
-    private void changeFragment(android.support.v4.app.Fragment fragment, AnimationType animationType, boolean addToBackStack) {
-        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    private void changeFragment(Fragment fragment, AnimationType animationType, boolean addToBackStack) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (animationType) {
             case LEFT_TO_RIGHT:
                 ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
