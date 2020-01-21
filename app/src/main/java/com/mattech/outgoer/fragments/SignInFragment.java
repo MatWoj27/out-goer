@@ -65,7 +65,7 @@ public class SignInFragment extends Fragment {
             } else if (password.getText().toString().trim().isEmpty()) {
                 ViewAnimator.animateViewShake(password);
                 Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
-            } else {
+            } else if (listener != null) {
                 listener.signIn();
             }
         });
