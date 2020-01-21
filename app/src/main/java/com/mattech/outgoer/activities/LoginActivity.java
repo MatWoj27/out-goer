@@ -3,8 +3,8 @@ package com.mattech.outgoer.activities;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -16,7 +16,7 @@ import com.mattech.outgoer.fragments.SignUpFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity implements SignInFragment.ActionPerformedListener, SignUpFragment.ActionPerformedListener {
+public class LoginActivity extends FragmentActivity implements SignInFragment.ActionPerformedListener, SignUpFragment.ActionPerformedListener {
     private AnimationDrawable animationDrawable;
 
     @BindView(R.id.login_layout)
