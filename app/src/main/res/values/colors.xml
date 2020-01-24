@@ -4,4 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#A73E88</color>
+
+    <!-- Shiny colors for gradient backgrounds -->
+    <color name="shinyGreen">#32ff3f</color>
+    <color name="shinyLightBlue">#43b4ca</color>
+    <color name="shinyDarkBlue">#715df0</color>
+    <color name="shinyViolet">#933c9f</color>
+    <color name="shinyOrange">#e66210</color>
+    <color name="shinyRed">#a31515</color>
 </resources>
