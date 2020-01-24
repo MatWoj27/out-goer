@@ -1,5 +1,6 @@
 package com.mattech.outgoer.activities;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -53,6 +54,8 @@ public class LoginActivity extends FragmentActivity implements SignInFragment.Ac
 
     @Override
     public void signIn() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
