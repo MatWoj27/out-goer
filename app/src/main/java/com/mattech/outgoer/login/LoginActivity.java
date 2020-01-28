@@ -1,4 +1,4 @@
-package com.mattech.outgoer.activities;
+package com.mattech.outgoer.login;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.mattech.outgoer.R;
-import com.mattech.outgoer.fragments.ResetPasswordFragment;
-import com.mattech.outgoer.fragments.SignInFragment;
-import com.mattech.outgoer.fragments.SignUpFragment;
+import com.mattech.outgoer.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

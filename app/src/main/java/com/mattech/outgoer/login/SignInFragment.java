@@ -1,4 +1,4 @@
-package com.mattech.outgoer.fragments;
+package com.mattech.outgoer.login;
 
 import android.content.Context;
 import android.os.Bundle;

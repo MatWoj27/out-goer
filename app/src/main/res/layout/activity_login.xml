@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="3"
-    tools:context="com.mattech.outgoer.activities.LoginActivity">
+    tools:context="com.mattech.outgoer.login.LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.mattech.outgoer.activities;
+package com.mattech.outgoer.main;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import com.mattech.outgoer.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements MainContract.mvpView {
+    private MainContract.mvpPresenter mvpPresenter;
+
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
@@ -22,10 +24,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mvpPresenter = new MainPresenter(this);
         navigationView.setNavigationItemSelectedListener((menuItem) -> {
             menuItem.setChecked(true);
             drawerLayout.closeDrawers();
+            mvpPresenter.handleNavigationItemSelection(menuItem);
             return true;
         });
+    }
+
+    @Override
+    public void showLoginScreen() {
     }
 }
