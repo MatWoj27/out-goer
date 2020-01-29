@@ -2,10 +2,10 @@ package com.mattech.outgoer.main;
 
 import android.view.MenuItem;
 
-public class MainPresenter implements MainContract.mvpPresenter {
-    private MainContract.mvpView mvpView;
+public class MainPresenter implements MainContract.MvpPresenter {
+    private MainContract.MvpView mvpView;
 
-    public MainPresenter(MainContract.mvpView mvpView) {
+    public MainPresenter(MainContract.MvpView mvpView) {
         this.mvpView = mvpView;
     }
 

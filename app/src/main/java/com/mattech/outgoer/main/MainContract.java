@@ -3,11 +3,11 @@ package com.mattech.outgoer.main;
 import android.view.MenuItem;
 
 public interface MainContract {
-    interface mvpView {
+    interface MvpView {
         void showLoginScreen();
     }
 
-    interface mvpPresenter {
+    interface MvpPresenter {
         void handleSignOutBtnClick();
 
         void handleNavigationItemSelection(MenuItem item);

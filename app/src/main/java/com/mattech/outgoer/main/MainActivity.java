@@ -10,8 +10,8 @@ import com.mattech.outgoer.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends Activity implements MainContract.mvpView {
-    private MainContract.mvpPresenter mvpPresenter;
+public class MainActivity extends Activity implements MainContract.MvpView {
+    private MainContract.MvpPresenter mvpPresenter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
