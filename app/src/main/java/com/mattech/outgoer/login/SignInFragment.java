@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignInFragment extends Fragment {
-    ActionPerformedListener listener;
+    private ActionPerformedListener listener;
 
     @BindView(R.id.username)
     EditText username;
