@@ -15,7 +15,8 @@ import com.mattech.outgoer.utils.ViewAnimator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ResetPasswordFragment extends Fragment {
+public class ResetPasswordFragment extends Fragment implements ResetPasswordContract.MvpView {
+    private ResetPasswordContract.MvpPresenter mvpPresenter;
 
     @BindView(R.id.reset_header)
     TextView resetHeader;
@@ -37,24 +38,28 @@ public class ResetPasswordFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reset_password, container, false);
         ButterKnife.bind(this, view);
-        sendBtn.setOnClickListener(v -> arrangeResetCodeStep());
+        mvpPresenter = new ResetPasswordPresenter(this);
+        sendBtn.setOnClickListener(v -> mvpPresenter.handleSendEmailBtnClick(mail.getText().toString()));
         return view;
     }
 
-    private void arrangeResetCodeStep() {
+    @Override
+    public void showResetCodeScreen() {
         animateTextChange(resetHeader, getResources().getString(R.string.enter_reset_code));
         animateTextChange(resetInfo, getResources().getString(R.string.reset_code_info));
         mail.setHint(getResources().getString(R.string.reset_code_hint));
         animateTextChange(sendBtn, getResources().getString(R.string.verify));
-        sendBtn.setOnClickListener(v -> arrangeChangePassStep());
+        sendBtn.setOnClickListener(v -> mvpPresenter.handleVerifyRestCodeBtnClick(mail.getText().toString()));
     }
 
-    private void arrangeChangePassStep() {
+    @Override
+    public void showSetNewPasswordScreen() {
         animateTextChange(resetHeader, getResources().getString(R.string.reset_pass));
         animateTextChange(resetInfo, getResources().getString(R.string.reset_pass_info));
         newPass.setVisibility(View.VISIBLE);
         mail.setHint(R.string.confirm_new_pass);
         animateTextChange(sendBtn, getResources().getString(R.string.change));
+        sendBtn.setOnClickListener(v -> mvpPresenter.handleConfirmPasswordChangeBtnClick(newPass.getText().toString(), mail.getText().toString()));
     }
 
     private void animateTextChange(TextView textView, String text) {
