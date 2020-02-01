@@ -17,8 +17,9 @@ import com.mattech.outgoer.utils.ViewAnimator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SignInFragment extends Fragment {
+public class SignInFragment extends Fragment implements SignInContract.MvpView {
     private ActionPerformedListener listener;
+    private SignInContract.MvpPresenter mvpPresenter;
 
     @BindView(R.id.username)
     EditText username;
@@ -58,26 +59,41 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         ButterKnife.bind(this, view);
-        signInBtn.setOnClickListener(v -> {
-            if (username.getText().toString().trim().isEmpty()) {
-                ViewAnimator.animateViewShake(username);
-                Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
-            } else if (password.getText().toString().trim().isEmpty()) {
-                ViewAnimator.animateViewShake(password);
-                Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
-            } else if (listener != null) {
-                listener.signIn();
-            }
-        });
-        signUp.setOnClickListener(v -> {
-            if (listener != null)
-                listener.goToSignUp();
-        });
-        forgotPassword.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.goToResetPassword();
-            }
-        });
+        mvpPresenter = new SignInPresenter(this);
+        signInBtn.setOnClickListener(v -> mvpPresenter.handleSignInBtnClick(username.getText().toString(),
+                password.getText().toString()));
+        signUp.setOnClickListener(v -> mvpPresenter.handleSignUpBtnClick());
+        forgotPassword.setOnClickListener(v -> mvpPresenter.handleForgotPasswordBtnClick());
         return view;
+    }
+
+    @Override
+    public void showSignUpScreen() {
+        if (listener != null)
+            listener.goToSignUp();
+    }
+
+    @Override
+    public void showResetPasswordScreen() {
+        if (listener != null)
+            listener.goToResetPassword();
+    }
+
+    @Override
+    public void showMainScreen() {
+        if (listener != null)
+            listener.signIn();
+    }
+
+    @Override
+    public void displayEmptyUsernameWarning() {
+        ViewAnimator.animateViewShake(username);
+        Toast.makeText(getContext(), getResources().getString(R.string.no_username_error), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void displayEmptyPasswordWarning() {
+        ViewAnimator.animateViewShake(password);
+        Toast.makeText(getContext(), getResources().getString(R.string.no_pass_error), Toast.LENGTH_SHORT).show();
     }
 }
