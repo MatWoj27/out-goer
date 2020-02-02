@@ -1,21 +1,19 @@
 package com.mattech.outgoer.login;
 
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.mattech.outgoer.R;
-import com.mattech.outgoer.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends FragmentActivity implements SignInFragment.ActionPerformedListener, SignUpFragment.ActionPerformedListener {
+public class LoginActivity extends FragmentActivity implements LoginContract.MvpView {
+    private LoginPresenter presenter;
     private AnimationDrawable animationDrawable;
 
     @BindView(R.id.login_layout)
@@ -35,6 +33,7 @@ public class LoginActivity extends FragmentActivity implements SignInFragment.Ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        presenter = new LoginPresenter(this);
         animationDrawable = (AnimationDrawable) loginLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(3500);
@@ -51,34 +50,12 @@ public class LoginActivity extends FragmentActivity implements SignInFragment.Ac
     }
 
     @Override
-    public void signIn() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void setFragment(BaseFragment fragment, AnimationType animationType) {
+        changeFragment(fragment, animationType, true);
     }
 
-    @Override
-    public void goToSignUp() {
-        SignUpFragment signUpFragment = new SignUpFragment();
-        changeFragment(signUpFragment, AnimationType.LEFT_TO_RIGHT, true);
-    }
-
-    @Override
-    public void goToResetPassword() {
-        ResetPasswordFragment resetPasswordFragment = new ResetPasswordFragment();
-        changeFragment(resetPasswordFragment, AnimationType.RIGHT_TO_LEFT, true);
-    }
-
-    @Override
-    public void signUp() {
-    }
-
-    @Override
-    public void goToSignIn() {
-        SignInFragment signInFragment = new SignInFragment();
-        changeFragment(signInFragment, AnimationType.RIGHT_TO_LEFT, true);
-    }
-
-    private void changeFragment(Fragment fragment, AnimationType animationType, boolean addToBackStack) {
+    private void changeFragment(BaseFragment fragment, AnimationType animationType, boolean addToBackStack) {
+        fragment.attachPresenter(presenter);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (animationType) {
             case LEFT_TO_RIGHT:

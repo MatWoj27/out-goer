@@ -23,9 +23,4 @@ public class SignUpPresenter implements SignUpContract.MvpPresenter {
             mvpView.showSignInScreen();
         }
     }
-
-    @Override
-    public void handleSignInBtnClick() {
-        mvpView.showSignInScreen();
-    }
 }

@@ -17,7 +17,5 @@ public interface SignUpContract {
 
     interface MvpPresenter {
         void handleSignUpBtnClick(String mail, String username, String password, String repeatedPassword);
-
-        void handleSignInBtnClick();
     }
 }

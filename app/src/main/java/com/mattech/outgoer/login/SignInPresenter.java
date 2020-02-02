@@ -17,14 +17,4 @@ public class SignInPresenter implements SignInContract.MvpPresenter {
             mvpView.showMainScreen();
         }
     }
-
-    @Override
-    public void handleSignUpBtnClick() {
-        mvpView.showSignUpScreen();
-    }
-
-    @Override
-    public void handleForgotPasswordBtnClick() {
-        mvpView.showResetPasswordScreen();
-    }
 }

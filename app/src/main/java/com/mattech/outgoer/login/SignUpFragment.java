@@ -1,8 +1,6 @@
 package com.mattech.outgoer.login;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +15,7 @@ import com.mattech.outgoer.utils.ViewAnimator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SignUpFragment extends Fragment implements SignUpContract.MvpView {
-    private ActionPerformedListener listener;
+public class SignUpFragment extends BaseFragment implements SignUpContract.MvpView {
     private SignUpContract.MvpPresenter mvpPresenter;
 
     @BindView(R.id.mail)
@@ -39,29 +36,13 @@ public class SignUpFragment extends Fragment implements SignUpContract.MvpView {
     @BindView(R.id.sign_in)
     TextView signIn;
 
-    public interface ActionPerformedListener {
-        void signUp();
-
-        void goToSignIn();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof ActionPerformedListener) {
-            listener = (ActionPerformedListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " has to implement SignUpFragment.ActionPerformedListener");
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         ButterKnife.bind(this, view);
         mvpPresenter = new SignUpPresenter(this);
-        signIn.setOnClickListener(v -> mvpPresenter.handleSignInBtnClick());
+        signIn.setOnClickListener(v -> navigationPresenter.addFragment(new SignInFragment(), LoginActivity.AnimationType.RIGHT_TO_LEFT));
         signUpBtn.setOnClickListener(v -> mvpPresenter.handleSignUpBtnClick(mail.getText().toString(),
                 username.getText().toString(),
                 password.getText().toString(),
@@ -102,7 +83,6 @@ public class SignUpFragment extends Fragment implements SignUpContract.MvpView {
 
     @Override
     public void showSignInScreen() {
-        if (listener != null)
-            listener.goToSignIn();
+        navigationPresenter.addFragment(new SignInFragment(), LoginActivity.AnimationType.RIGHT_TO_LEFT);
     }
 }
