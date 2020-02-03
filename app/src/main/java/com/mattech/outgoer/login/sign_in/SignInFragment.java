@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.sign_in;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mattech.outgoer.R;
+import com.mattech.outgoer.login.BaseFragment;
+import com.mattech.outgoer.login.LoginActivity;
+import com.mattech.outgoer.login.reset_password.ResetPasswordFragment;
+import com.mattech.outgoer.login.sign_up.SignUpFragment;
 import com.mattech.outgoer.main.MainActivity;
 import com.mattech.outgoer.utils.ViewAnimator;
 

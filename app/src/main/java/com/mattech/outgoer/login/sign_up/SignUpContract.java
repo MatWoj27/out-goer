@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.sign_up;
 
 public interface SignUpContract {
     interface MvpView {

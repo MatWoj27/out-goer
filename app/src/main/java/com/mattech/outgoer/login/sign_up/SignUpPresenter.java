@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.sign_up;
 
 public class SignUpPresenter implements SignUpContract.MvpPresenter {
     private SignUpContract.MvpView mvpView;

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.mattech.outgoer.R;
+import com.mattech.outgoer.login.sign_in.SignInFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +23,7 @@ public class LoginActivity extends FragmentActivity implements LoginContract.Mvp
     @BindView(R.id.login_frame)
     FrameLayout loginFrame;
 
-    enum AnimationType {
+    public enum AnimationType {
         LEFT_TO_RIGHT,
         RIGHT_TO_LEFT,
         NO_ANIM

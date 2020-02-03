@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.reset_password;
 
 public interface ResetPasswordContract {
     interface MvpView {

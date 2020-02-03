@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.reset_password;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mattech.outgoer.R;
+import com.mattech.outgoer.login.BaseFragment;
 import com.mattech.outgoer.utils.ViewAnimator;
 
 import butterknife.BindView;

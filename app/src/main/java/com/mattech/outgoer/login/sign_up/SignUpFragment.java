@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.sign_up;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mattech.outgoer.R;
+import com.mattech.outgoer.login.BaseFragment;
+import com.mattech.outgoer.login.LoginActivity;
+import com.mattech.outgoer.login.sign_in.SignInFragment;
 import com.mattech.outgoer.utils.ViewAnimator;
 
 import butterknife.BindView;

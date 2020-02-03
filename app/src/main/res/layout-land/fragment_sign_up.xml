@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.mattech.outgoer.login.SignUpFragment">
+    tools:context="com.mattech.outgoer.login.sign_up.SignUpFragment">
 
     <include layout="@layout/sign_up_content" />
 

@@ -1,4 +1,4 @@
-package com.mattech.outgoer.login;
+package com.mattech.outgoer.login.reset_password;
 
 public class ResetPasswordPresenter implements ResetPasswordContract.MvpPresenter {
     private ResetPasswordContract.MvpView mvpView;
