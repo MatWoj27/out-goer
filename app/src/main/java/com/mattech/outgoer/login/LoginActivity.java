@@ -2,6 +2,7 @@ package com.mattech.outgoer.login;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
@@ -40,7 +41,22 @@ public class LoginActivity extends FragmentActivity implements LoginContract.Mvp
         animationDrawable.setExitFadeDuration(3500);
         if (savedInstanceState == null) {
             SignInFragment signInFragment = new SignInFragment();
-            changeFragment(signInFragment, AnimationType.NO_ANIM, false);
+            changeFragment(signInFragment, AnimationType.NO_ANIM);
+        } else {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
+                BaseFragment fragment = (BaseFragment) fragmentManager.findFragmentByTag(String.valueOf(i));
+                fragment.attachPresenter(presenter);
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finishAndRemoveTask();
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -52,12 +68,13 @@ public class LoginActivity extends FragmentActivity implements LoginContract.Mvp
 
     @Override
     public void setFragment(BaseFragment fragment, AnimationType animationType) {
-        changeFragment(fragment, animationType, true);
+        changeFragment(fragment, animationType);
     }
 
-    private void changeFragment(BaseFragment fragment, AnimationType animationType, boolean addToBackStack) {
+    private void changeFragment(BaseFragment fragment, AnimationType animationType) {
         fragment.attachPresenter(presenter);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
         switch (animationType) {
             case LEFT_TO_RIGHT:
                 ft.setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left,
@@ -68,10 +85,9 @@ public class LoginActivity extends FragmentActivity implements LoginContract.Mvp
                         R.anim.enter_right_to_left, R.anim.exit_right_to_left);
                 break;
         }
-        ft.replace(R.id.login_frame, fragment);
-        if (addToBackStack) {
-            ft.addToBackStack(null);
-        }
+        String tag = String.valueOf(fragmentManager.getBackStackEntryCount());
+        ft.replace(R.id.login_frame, fragment, tag);
+        ft.addToBackStack(tag);
         ft.commit();
     }
 }
